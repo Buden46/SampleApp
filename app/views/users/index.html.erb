@@ -1,0 +1,32 @@
+<% if @users.present? %>
+  <div class="container">
+    <table class="table table-bordered">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>Address</th>
+        <th>Hobbies</th>
+        <th>Actions</th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></a></td>
+          <!-- <td><%= link_to 'Show', user %></td> -->
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.phone_number %></td>
+          <td><%= user.address %></td>
+          <td><%= user.hobbies %></td>
+          <td><%= button_to 'Edit', { action: :edit, id: user.id }, class: "text-center", method: :get %>&nbsp;</td><td><%= button_to 'Delete', {action: :destroy, id: user.id},  onclick: 'return confirm("Are you sure?")', method: :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="pagination pagination-centered">
+      <%= paginate @users %>
+    </div>
+  </div>
+<% else %>
+  <p class="text-center">No user found. Click <a href="/users/create_user">here</a> to create</p>
+<% end %>

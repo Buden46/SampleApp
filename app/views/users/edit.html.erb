@@ -1,0 +1,23 @@
+<div class="container">
+  <% if flash.present? %>
+    <%= flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
+  <% end %>
+  <%= form_for(@user) do |f| %>
+      <fieldset>
+        <label>Name</label>
+        <%= f.text_field :name, value: @user.name, placeholder: "Enter name" %>
+        <label>Email</label>
+        <%= f.text_field :email, value: @user.email, placeholder: "Enter email" %>
+        <label>Phone number</label>
+        <%= f.text_field :phone_number, value: @user.phone_number, placeholder: "Enter phone number" %>
+        <label>Address</label>
+        <%= f.text_field :address, value: @user.address, placeholder: "Enter address" %>
+        <label>Hobbies</label>
+        <%= f.text_field :hobbies, value: @user.hobbies, placeholder: "Enter hobbies" %>
+      </fieldset>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+</div>

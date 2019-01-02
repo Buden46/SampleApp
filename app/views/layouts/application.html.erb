@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poshvine</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.css" crossorigin="anonymus">
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script> -->
+  <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-modal.js"></script>
+
+
+  <!-- <%= stylesheet_link_tag    "application", :media => "all" %> -->
+  <!-- <%= javascript_include_tag :defaults %> -->
+  <%= javascript_include_tag 'application' %>
+  <!-- <%= javascript_include_tag :defaults %> -->
+  <%= csrf_meta_tag %>
+  <!-- <%= csrf_meta_tags %> -->
+</head>
+<body>
+<!-- <link rel="stylesheets" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.css"> -->
+<%= render 'layouts/navigation' %>
+
+<%= yield %>
+
+</body>
+</html>
