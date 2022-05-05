@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+# gem 'mimemagic', '0.3.3'
 gem 'mysql2', '0.3.19'
 gem 'kaminari', '0.16.3'
 gem 'redis', '3.2.1'
