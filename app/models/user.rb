@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  attr_accessible :name, :email, :phone_number, :address, :hobbies
+  # attr_accessible :name, :email, :phone_number, :address, :hobbies
 
   validates :email, :uniqueness => { :case_sensitive => false },
                     format: { with: /\A[-a-zA-Z0-9.'’&_%+]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,20}\z/ }

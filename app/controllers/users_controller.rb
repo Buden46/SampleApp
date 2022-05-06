@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def create
     Rails.logger.info "params for creating user is #{params[:user]}"
-    @user = User.new(params[:user])
+    @user = User.new(user_params(params[:user]))
     result = @user.save
     if result
       flash[:success] = "User created successfully"
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    result = @user.update_attributes(params[:user])
+    result = @user.update_attributes(user_params(params[:user]))
 
     if result
       flash[:success] = "User updated successfully"
@@ -121,11 +121,11 @@ class UsersController < ApplicationController
   end
 
   def import_users
-    @csv_importer = CsvImporter.new(params[:attachment])
+    @csv_importer = CsvImporter.new(import_params(params[:attachment]))
     if @csv_importer.save
       file_path = Rails.env == 'test' ? "#{Rails.root.to_s}/spec/fixtures/sample_csv.csv" :
                                         "#{Rails.root.to_s}/public#{@csv_importer.attachment_url}"
-      UserCreateWorker.perform_async(file_path)
+      # UserCreateWorker.perform_async(file_path)
       # redirect_to csv_importers_path, notice: "The resume #{@csv_importer.name} has been uploaded."
       respond_to do |format|
         format.html { redirect_to '/users' }
@@ -140,5 +140,13 @@ class UsersController < ApplicationController
 
   def load_user
     @user = User.find_by_id(params[:id])
+  end
+
+  def user_params(given_params)
+    given_params.permit(:name, :email, :phone_number, :address, :hobbies)
+  end
+
+  def import_params(given_params)
+    given_params.permit(:attachment, :name)
   end
 end

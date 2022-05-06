@@ -5,10 +5,11 @@
 #   gem 'sqlite3'
 development:
   adapter: mysql2
-  encoding: utf8
+  # encoding: utf8
   database: poshvine_dev
   pool: 5
   timeout: 5000
+  host: host.docker.internal
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,6 +20,7 @@ test:
   database: poshvine_test
   pool: 5
   timeout: 5000
+  host: host.docker.internal
 
 production:
   adapter: mysql2
